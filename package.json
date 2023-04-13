@@ -1,0 +1,32 @@
+{
+	"name": "critics-word-api",
+	"version": "1.0.0",
+	"description": "A game review application REST API service built on NodeJS ExpressJS Mongoose ",
+	"main": "./src/index.js",
+	"scripts": {
+		"dev": "nodemon ./src/index.js",
+		"start": "node ./src/index.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/tam11a/critics-word-api.git"
+	},
+	"keywords": [
+		"game-review",
+		"nodejs",
+		"expressjs"
+	],
+	"author": "tam11a",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/tam11a/critics-word-api/issues"
+	},
+	"homepage": "https://github.com/tam11a/critics-word-api#readme",
+	"dependencies": {
+		"cors": "2.8.5",
+		"dotenv": "16.0.3",
+		"express": "4.18.2",
+		"mongoose": "7.0.3"
+	}
+}
