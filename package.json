@@ -1,7 +1,7 @@
 {
-	"name": "critics-word-api",
+	"name": "app-api",
 	"version": "1.0.0",
-	"description": "A game review application REST API service built on NodeJS ExpressJS Mongoose ",
+	"description": "A JavaScript Boilarplate using ExpressJS, NodeJS, Mongoose",
 	"main": "./src/index.js",
 	"scripts": {
 		"dev": "nodemon ./src/index.js",
@@ -10,19 +10,19 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/tam11a/critics-word-api.git"
+		"url": "git+https://github.com/tam11a/javascript-express-boilarplate.git"
 	},
 	"keywords": [
-		"game-review",
 		"nodejs",
+		"mongoose",
 		"expressjs"
 	],
 	"author": "tam11a",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/tam11a/critics-word-api/issues"
+		"url": "https://github.com/tam11a/javascript-express-boilarplate/issues"
 	},
-	"homepage": "https://github.com/tam11a/critics-word-api#readme",
+	"homepage": "https://github.com/tam11a/javascript-express-boilarplate#readme",
 	"dependencies": {
 		"cors": "2.8.5",
 		"dotenv": "16.0.3",
