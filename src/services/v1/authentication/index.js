@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const schema = require("./authentication.schema");
 
-router.use("/v1", require("./v1"));
+router.route("/login", schema.login);
 
 module.exports = router;
