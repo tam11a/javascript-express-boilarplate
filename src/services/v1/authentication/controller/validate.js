@@ -1,16 +1,13 @@
 const ErrorResponse = require("../../../../utilities/error/error.response");
 
 module.exports = async (req, res, next) => {
-	const { email, password } = req.body;
-
-	if (!email || !password)
-		return next(new ErrorResponse("Please provide email and password", 400));
-
 	try {
+		if (!req.user) return next(new ErrorResponse("No user found!", 404));
+
 		res.status(200).json({
 			success: true,
-			token: "TOKEN_HERE", // otp._id,
-			message: "Welcome Ibrahim Sadik Tamim!",
+			message: "User is authenticated.",
+			data: {},
 		});
 	} catch (error) {
 		// Send Error Response
