@@ -2,17 +2,21 @@ const { Users } = require("../../../../database");
 const ErrorResponse = require("../../../../utilities/error/error.response");
 
 module.exports = async (req, res, next) => {
-    if (!req.user) {
+    if (req.user) {
         // Get Values
         const {
-            userName,
+            username,
             firstName,
             lastName,
             email,
         } = req.body;
         try {
-            await Users.findByIdAndUpdate({
-                userName,
+            const user = await Users.findByPk(req.user.id)
+            if (!user) {
+                
+            }
+            await user.update({
+                username,
                 firstName,
                 lastName,
                 email,

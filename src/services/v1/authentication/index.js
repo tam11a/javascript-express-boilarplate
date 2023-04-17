@@ -138,7 +138,7 @@ router.get(
 );
 
 router.patch(
-    "/updateProfile",
+    "/update-profile",
     protect,
     schema.updateProfile
     /*
@@ -147,6 +147,39 @@ router.patch(
         #swagger.security = [{
             "bearerAuth": []
         }]
+
+        #swagger.requestBody = {
+            required: true,
+            content: {
+                "application/json": {
+                    schema: {
+                        "properties": { 
+                            "username": { 
+                                "type": "string", 
+                                "minLength": 1, 
+                                "example": "tam11a" 
+                            },
+                            "firstName": { 
+                                "type": "string", 
+                                "minLength": 1, 
+                                "example": "Rudolf" 
+                            },
+                            "lastName": { 
+                                "type": "string", 
+                                "minLength": 1, 
+                                "example": "Tam" 
+                            },
+                            "email": { 
+                                "type": "string", 
+                                "minLength": 1, 
+                                "example": "ibrahimsadiktamim@gmail.com" 
+                            },
+                            
+                        } 
+                    },
+                }
+            }
+        }
 
         #swagger.responses[200] = {
             description: "Authenticated",

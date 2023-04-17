@@ -136,7 +136,15 @@
           "Authentication"
         ],
         "description": "Validate user",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Authenticated"
@@ -159,6 +167,76 @@
             "bearerAuth": []
           }
         ]
+      }
+    },
+    "/api/v1/authentication/update-profile": {
+      "patch": {
+        "tags": [
+          "Authentication"
+        ],
+        "description": "Update user",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Authenticated"
+          },
+          "400": {
+            "description": "Invalid Request"
+          },
+          "401": {
+            "description": "Unauthenticated"
+          },
+          "404": {
+            "description": "No User Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "tam11a"
+                  },
+                  "firstName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Rudolf"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Tam"
+                  },
+                  "email": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "ibrahimsadiktamim@gmail.com"
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
