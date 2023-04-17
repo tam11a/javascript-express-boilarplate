@@ -137,4 +137,33 @@ router.get(
     */
 );
 
+router.patch(
+    "/updateProfile",
+    protect,
+    schema.updateProfile
+    /*
+        #swagger.description = 'Update user' 
+
+        #swagger.security = [{
+            "bearerAuth": []
+        }]
+
+        #swagger.responses[200] = {
+            description: "Authenticated",
+        }   
+        #swagger.responses[400] = {
+            description: "Invalid Request",
+        }   
+        #swagger.responses[401] = {
+            description: "Unauthenticated",
+        }   
+        #swagger.responses[404] = {
+            description: "No User Found",
+        }   
+        #swagger.responses[500] = {
+            description: "Internal Server Error",
+        }   
+    */
+);
+
 module.exports = router;
