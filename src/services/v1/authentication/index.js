@@ -3,6 +3,66 @@ const router = express.Router();
 const schema = require("./authentication.schema");
 
 router.post(
+	"/register",
+	schema.register
+	/* 	
+        #swagger.description = 'Register a new user' 
+
+        #swagger.requestBody = {
+            required: true,
+            content: {
+                "application/json": {
+                    schema: {
+                        "required": ["username", "firstName", "lastName", "email", "password"], 
+                        "properties": { 
+                            "username": { 
+                                "type": "string", 
+                                "minLength": 1, 
+                                "example": "tam11a" 
+                            },
+                            "firstName": { 
+                                "type": "string", 
+                                "minLength": 1, 
+                                "example": "Rudolf" 
+                            },
+                            "lastName": { 
+                                "type": "string", 
+                                "minLength": 1, 
+                                "example": "Tam" 
+                            },
+                            "email": { 
+                                "type": "string", 
+                                "minLength": 1, 
+                                "example": "ibrahimsadiktamim@gmail.com" 
+                            },
+                            "password": { 
+                                "type": "string", 
+                                "minLength": 6, 
+                                "example": "123456" 
+                            } 
+                            
+                        } 
+                    },
+                }
+            }
+        }
+
+        #swagger.responses[201] = {
+            description: "Registration Successful",
+        }   
+        #swagger.responses[400] = {
+            description: "Invalid Request",
+        }   
+        #swagger.responses[401] = {
+            description: "Invalid Credentials",
+        }   
+        #swagger.responses[500] = {
+            description: "Internal Server Error",
+        }   
+    */
+);
+
+router.post(
 	"/login",
 	schema.login
 	/* 	

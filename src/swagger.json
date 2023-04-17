@@ -16,6 +16,72 @@
     }
   ],
   "paths": {
+    "/api/v1/authentication/register": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "description": "Register a new user",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Registration Successful"
+          },
+          "400": {
+            "description": "Invalid Request"
+          },
+          "401": {
+            "description": "Invalid Credentials"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "required": [
+                  "username",
+                  "firstName",
+                  "lastName",
+                  "email",
+                  "password"
+                ],
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "tam11a"
+                  },
+                  "firstName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Rudolf"
+                  },
+                  "lastName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "Tam"
+                  },
+                  "email": {
+                    "type": "string",
+                    "minLength": 1,
+                    "example": "ibrahimsadiktamim@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "minLength": 6,
+                    "example": "123456"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v1/authentication/login": {
       "post": {
         "tags": [
