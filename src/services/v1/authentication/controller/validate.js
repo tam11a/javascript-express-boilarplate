@@ -7,7 +7,13 @@ module.exports = async (req, res, next) => {
 		res.status(200).json({
 			success: true,
 			message: "User is authenticated.",
-			data: {},
+			data: {
+				id: req.user.id,
+				firstName: req.user.firstName,
+				lastName: req.user.lastName,
+				username: req.user.username,
+				createdAt: req.user.createdAt,
+			},
 		});
 	} catch (error) {
 		// Send Error Response

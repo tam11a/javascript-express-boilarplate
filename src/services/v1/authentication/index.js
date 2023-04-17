@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const schema = require("./authentication.schema");
+const { protect } = require("../../../authentication");
 
 router.post(
 	"/register",
@@ -109,6 +110,7 @@ router.post(
 
 router.get(
 	"/validate",
+	protect,
 	schema.validate
 	/* 	
         #swagger.description = 'Validate user' 
