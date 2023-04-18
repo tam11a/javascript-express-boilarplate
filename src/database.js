@@ -8,9 +8,6 @@ const db = {
 	Connection,
 };
 
-db.Users = require("./services/v1/authentication/authentication.model")(
-	Connection,
-	Sequelize
-);
+db.Users = require("./services/v1/users/users.model")(Connection, Sequelize);
 
 module.exports = db;
