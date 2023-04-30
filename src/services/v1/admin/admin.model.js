@@ -1,7 +1,7 @@
 const bcrypt = require("bcryptjs");
 
 module.exports = (sequelize, Sequelize) => {
-	const User = sequelize.define("user", {
+	const Admin = sequelize.define("admin", {
 		firstName: {
 			type: Sequelize.STRING,
 			allowNull: false,
@@ -28,11 +28,11 @@ module.exports = (sequelize, Sequelize) => {
 		},
 	});
 
-	User.beforeCreate(async (user) => {
+	Admin.beforeCreate(async (user) => {
 		const salt = await bcrypt.genSalt(10);
 		const hashedPassword = await bcrypt.hash(user.password, salt);
 		user.password = hashedPassword;
 	});
 
-	return User;
+	return Admin;
 };

@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const { Users } = require("./database");
+const { Users, Admin } = require("./database");
 const ErrorResponse = require("./utilities/error/error.response");
 
 exports.protect = async (req, _res, next) => {
@@ -18,7 +18,15 @@ exports.protect = async (req, _res, next) => {
 		const decoded = jwt.verify(token, process.env.JWT_SECRET);
 		if (!decoded.id) return next(new ErrorResponse("Unauthorized user!", 401));
 
-		const user = await Users.findByPk(decoded.id);
+		req.isAdmin = decoded.admin;
+
+		var user;
+		if (req.isAdmin) {
+			user = await Admin.findByPk(decoded.id);
+		} else {
+			user = await Users.findByPk(decoded.id);
+		}
+
 		if (!user) return next(new ErrorResponse("Unauthorized user!", 401));
 
 		req.user = user;
@@ -30,10 +38,37 @@ exports.protect = async (req, _res, next) => {
 		req.updatedBy = {
 			updatedBy: user._id,
 		};
-
-		next();
 	} catch (error) {
 		// error
 		return next(new ErrorResponse("Unauthorized user!", 401));
 	}
+};
+
+exports.authorized = asnyc = async (req, res, next) => {
+	await this.protect(req, res, next);
+	next();
+};
+
+exports.adminAuthorized = async (req, res, next) => {
+	await this.protect(req, res, next);
+	if (!req.isAdmin)
+		return next(
+			new ErrorResponse(
+				"Authorized as user! Please sign in with Admin account.",
+				401
+			)
+		);
+	next();
+};
+
+exports.userAuthorized = async (req, res, next) => {
+	await this.protect(req, res, next);
+	if (req.isAdmin)
+		return next(
+			new ErrorResponse(
+				"Authorized as admin! Please sign in with User account.",
+				401
+			)
+		);
+	next();
 };

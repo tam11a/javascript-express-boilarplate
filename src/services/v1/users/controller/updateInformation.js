@@ -3,10 +3,15 @@ const ErrorResponse = require("../../../../utilities/error/error.response");
 
 module.exports = async (req, res, next) => {
 	// Get Values
-	const { username, firstName, lastName } = req.body;
-
 	try {
-		const user = await Users.findByPk(req.user.id);
+		if (!req.params.id) return next(new ErrorResponse("Invalid Request!", 400));
+		const { username, firstName, lastName } = req.body;
+
+		const user = await Users.findByPk(req.params.id, {
+			attributes: {
+				exclude: ["password"],
+			},
+		});
 
 		if (!user) return next(new ErrorResponse("No user found!", 404));
 
@@ -16,7 +21,7 @@ module.exports = async (req, res, next) => {
 			lastName,
 		});
 
-		res.status(201).json({
+		res.status(200).json({
 			success: true,
 			message: "Informations updated sucessfully",
 		});

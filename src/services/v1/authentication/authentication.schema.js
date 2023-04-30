@@ -1,6 +1,8 @@
+const { userAuthorized } = require("../../../authentication");
+
 module.exports = {
 	login: require("./controller/login"),
-	validate: require("./controller/validate"),
+	validate: [userAuthorized, require("./controller/validate")],
 	register: require("./controller/register"),
-	updateProfile: require("./controller/updateProfile")
+	updateProfile: [userAuthorized, require("./controller/updateProfile")],
 };

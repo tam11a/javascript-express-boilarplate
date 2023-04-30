@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const schema = require("./authentication.schema");
-const { userAuthorized } = require("../../../authentication");
+const schema = require("./admin.schema");
+const { adminAuthorized } = require("../../../authentication");
 
 router.post(
 	"/register",
 	schema.register
 	/* 	
-        #swagger.description = 'Register a new user' 
+        #swagger.description = 'Register a new admin' 
 
         #swagger.requestBody = {
             required: true,
@@ -67,7 +67,7 @@ router.post(
 	"/login",
 	schema.login
 	/* 	
-        #swagger.description = 'Sign a specific user in' 
+        #swagger.description = 'Sign a specific admin in' 
 
         #swagger.requestBody = {
             required: true,
@@ -112,7 +112,7 @@ router.get(
 	"/validate",
 	schema.validate
 	/* 	
-        #swagger.description = 'Validate user' 
+        #swagger.description = 'Validate admin' 
 
         #swagger.security = [{
             "bearerAuth": []
@@ -140,7 +140,7 @@ router.patch(
 	"/update-profile",
 	schema.updateProfile
 	/*
-        #swagger.description = 'Update user' 
+        #swagger.description = 'Update admin information' 
 
         #swagger.security = [{
             "bearerAuth": []
@@ -167,7 +167,7 @@ router.patch(
                                 "minLength": 1, 
                                 "example": "Tam" 
                             },
-                        } 
+                         } 
                     },
                 }
             }

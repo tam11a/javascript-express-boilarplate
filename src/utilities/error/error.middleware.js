@@ -3,7 +3,6 @@ const ErrorResponse = require("./error.response");
 module.exports = (err, _req, res, _next) => {
 	let error = { ...err };
 	error.message = err.message;
-	console.log(err);
 	if (err.name?.includes("Sequelize")) {
 		var message = err.errors[0].message;
 		error = new ErrorResponse(

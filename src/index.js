@@ -3,6 +3,10 @@ const app = require("./app");
 const swaggerUi = require("swagger-ui-express");
 const swaggerFile = require("./swagger.json");
 const errorMiddleware = require("./utilities/error/error.middleware");
+const paginationMiddleware = require("./utilities/pagination/pagination.pre.middleware");
+
+// Middleware Pagination
+// app.use(paginationMiddleware);
 
 // API Routes
 app.use("/api", require("./services"));

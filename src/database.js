@@ -8,6 +8,8 @@ const db = {
 	Connection,
 };
 
+// Import Database to a base exports
 db.Users = require("./services/v1/users/users.model")(Connection, Sequelize);
+db.Admin = require("./services/v1/admin/admin.model")(Connection, Sequelize);
 
 module.exports = db;

@@ -1,12 +1,11 @@
-const { Users } = require("../../../../database");
+const { Admin } = require("../../../../database");
 const ErrorResponse = require("../../../../utilities/error/error.response");
 
 module.exports = async (req, res, next) => {
 	// Get Values
 	const { username, firstName, lastName } = req.body;
-
 	try {
-		const user = await Users.findByPk(req.user.id);
+		const user = await Admin.findByPk(req.user.id);
 
 		if (!user) return next(new ErrorResponse("No user found!", 404));
 
@@ -15,7 +14,6 @@ module.exports = async (req, res, next) => {
 			firstName,
 			lastName,
 		});
-
 		res.status(201).json({
 			success: true,
 			message: "Informations updated sucessfully",
